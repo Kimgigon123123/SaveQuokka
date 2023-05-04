@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cha{
+            position: relative;
+            top:400px;
+            left: 0;
+        }
+       
+        .wrap .goal{
+            position: fixed;
+            top:100px;
+            left:450px;
+
+        }
+
+        .key{
+            position: relative;
+           margin-top: 100px;
+            width: 300px;
+            height: 250px;
+        }
+
+        .b1{
+            position: absolute;
+            left:100px;
+        }
+        .b2{
+            position: absolute;
+            left: 0;
+        }
+        .b3{
+            position: absolute;
+            left:50px;
+            top:-50px;
+        }
+        .b4{
+            position: absolute;
+            left: 50px;
+        }
+
+        .b5{
+            text-align: center;
+        }
+
+        .wrap{
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>쿼카를 구해라</h1>
+    <div class="wrap">
+        <p class="cha"><img src="image/쿼카.png" alt=""></p>
+        <p class="goal">골인</p>
+    </div>
+    <div class="key">
+        <button class="b1">오른쪽</button>
+        <button class="b2">왼쪽</button>
+        <button class="b3">위쪽</button>
+        <button class="b4">아랫쪽</button>
+    </div>
+    <button class="b5">제출</button>
+    
+    
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+
+            
+
+        $(function(){
+                
+            var xcount=1;
+            var ycount=1;
+               
+            
+            $(".b1").click(function(){
+                xcount++;
+                var istrue=true;
+
+                if(xcount>5){
+                    xcount=5;
+                    istrue=false
+                    return;
+                }
+                if(istrue){
+                    $(".cha").stop(true,true).animate({"margin-left":"+=100px"})
+                }
+                
+            })
+
+            $(".b2").click(function(){
+                xcount=xcount-1;
+                var istrue=true;
+
+                if(xcount<1){
+                    xcount=1;
+                    istrue=false
+                    return;
+                }
+
+                if(istrue){
+                $(".cha").stop(true,true).animate({"margin-left":"-=100px"})
+            }
+            })
+            
+
+
+            $(".b3").click(function(){
+                ycount++;
+                var istrue=true;
+
+                if(ycount>5){
+                    ycount=5;
+                    istrue=false
+                    return;
+                }
+                if(istrue){
+                    $(".cha").stop(true,true).animate({"margin-top":"-=100px"})
+                }
+
+                
+                
+            })
+
+            $(".b4").click(function(){
+                ycount=ycount-1;
+                var istrue=true;
+
+                if(ycount<1){
+                    ycount=1;
+                    istrue=false
+                    return;
+                }
+                if(istrue){
+                    $(".cha").stop(true,true).animate({"margin-top":"+=100px"})
+                }
+                
+            })
+
+            $(".b5").click(function(){
+                if(xcount==5&&ycount==5){
+                    alert("성공!");
+                    location.reload()
+                }
+                else{
+                    alert("실패!");
+                    location.reload()
+                }
+            })
+
+            
+            
+        })
+    </script>
+</body>
+</html>
